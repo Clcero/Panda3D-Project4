@@ -1,7 +1,7 @@
 from CollideObjectBase import SphereCollideObject
 from panda3d.core import Loader, NodePath, Vec3
 from direct.task.Task import TaskManager
-from typing import Callable # New way to move player
+from typing import Callable
 from direct.task import Task
 
 class Spaceship(SphereCollideObject): # Player
@@ -9,7 +9,6 @@ class Spaceship(SphereCollideObject): # Player
         super(Spaceship, self).__init__(loader, modelPath, parentNode, nodeName, Vec3(0, 0, 0), 10)
         self.taskMgr = taskMgr
         self.accept = accept
-
         self.modelNode.setPos(posVec)
         self.modelNode.setScale(scaleVec)
         self.modelNode.setName(nodeName) 
@@ -18,7 +17,7 @@ class Spaceship(SphereCollideObject): # Player
 
         self.SetKeyBindings()
 
-        self.base = base # Must access ShowBase for taskMgr function
+        self.base = base # Pass base when instanced from Showbase
 
     # All key bindings for ship's movement.
     def SetKeyBindings(self):
@@ -47,7 +46,7 @@ class Spaceship(SphereCollideObject): # Player
             self.taskMgr.remove('forward-thrust')
     
     def ApplyFwdThrust(self, task):
-        rate = 20
+        rate = 22
         trajectory = self.base.render.getRelativeVector(self.modelNode, Vec3.forward())
         trajectory.normalize()
 

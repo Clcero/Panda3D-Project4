@@ -38,6 +38,8 @@ class MyApp(ShowBase):
         self.Hero = player.Spaceship(self, self.loader, self.taskMgr, self.accept, "./Assets/Spaceships/spaceship.obj", self.render, 'Hero', "./Assets/Spaceships/spaceship.jpg", (1000, 1200, -50), 0.5)
 
     def SetCollisions(self):
+        '''Handles traversing and pushing collisions'''
+        
         self.cTrav = CollisionTraverser()
         self.cTrav.traverse(self.render)
         self.pusher = CollisionHandlerPusher()
@@ -64,7 +66,7 @@ class MyApp(ShowBase):
 
         for i, planet_spec in enumerate(planets):
             position = self._generate_position(self.existing_positions, self.minDistance)
-            planet = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, f"Planet{i+1}", planet_spec["texture_path"], position, 150)
+            planet = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, f"Planet{i+1}", planet_spec["texture_path"], position, random.randint(150, 275))
             setattr(self, f"Planet{i+1}", planet)
             self.existing_positions.append(position)
 
@@ -127,9 +129,8 @@ class MyApp(ShowBase):
         # TODO make 3rd person camera? 
         self.disableMouse()
         self.camera.reparentTo(self.Hero.modelNode)
-        self.camera.setFluidPos(0, 1, 0)
+        self.camera.setFluidPos(0, 0.1, 0) # Slight adjustment to avoid model clipping
         
-
     # Prepare message if server wants to quit.
     def quit(self):
         '''Exit game.'''

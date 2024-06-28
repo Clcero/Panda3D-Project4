@@ -1,4 +1,3 @@
-# Make circle on each plane
 import math, random
 from panda3d.core import *
 

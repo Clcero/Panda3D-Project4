@@ -33,7 +33,7 @@ class Universe(InverseSphereCollideObject):
 
 class SpaceStation(CapsuleCollidableObject):
     def __init__(self, loader: Loader, modelPath: str, parentNode: NodePath, nodeName: str, texPath: str, posVec: Vec3, scaleVec: float):
-        super(SpaceStation, self).__init__(loader, modelPath, parentNode, nodeName, 800, -200, 500, 800, -200, -500, 1200) # Capsule size
+        super(SpaceStation, self).__init__(loader, modelPath, parentNode, nodeName, 300, -200, 500, 300, -200, -1000, 450) # Capsule size
         self.modelNode.setPos(posVec)
         self.modelNode.setScale(scaleVec)
         self.modelNode.setName(nodeName) 

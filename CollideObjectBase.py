@@ -22,11 +22,10 @@ class CollidableObject(PlacedObject):
         self.collisionNode = self.modelNode.attachNewNode(CollisionNode(nodeName + '_cNode'))
         # self.collisionNode.show()
 
-class InverseSphereCollideObject(CollidableObject):
+class InverseSphereCollideObject(CollidableObject): # World boundary
     def __init__(self, loader: Loader, modelPath: str, parentNode: NodePath, nodeName: str, colPositionVec: Vec3, colRadius: float):
         super(InverseSphereCollideObject, self).__init__(loader, modelPath, parentNode, nodeName)
         self.collisionNode.node().addSolid(CollisionInvSphere(colPositionVec, colRadius))
-        # self.collisionNode.show()
 
 class CapsuleCollidableObject(CollidableObject):
     # A and B are furthest points on the capsule
