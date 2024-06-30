@@ -46,7 +46,7 @@ class Spaceship(SphereCollideObject): # Player
             self.taskMgr.remove('forward-thrust')
     
     def ApplyFwdThrust(self, task):
-        rate = 22
+        rate = 25
         trajectory = self.base.render.getRelativeVector(self.modelNode, Vec3.forward())
         trajectory.normalize()
 
@@ -61,7 +61,7 @@ class Spaceship(SphereCollideObject): # Player
             self.taskMgr.remove('left-thrust')
     
     def ApplyLeftThrust(self, task):
-        rate = 10
+        rate = 25
         trajectory = self.base.render.getRelativeVector(self.modelNode, Vec3.left())
         trajectory.normalize()
 
@@ -76,7 +76,7 @@ class Spaceship(SphereCollideObject): # Player
             self.taskMgr.remove('right-thrust')
     
     def ApplyRightThrust(self, task):
-        rate = 10
+        rate = 25
         trajectory = self.base.render.getRelativeVector(self.modelNode, Vec3.right())
         trajectory.normalize()
 
